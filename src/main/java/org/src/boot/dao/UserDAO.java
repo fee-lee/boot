@@ -1,22 +1,17 @@
-package org.src.boot.service;
+package org.src.boot.dao;
 
-import org.springframework.transaction.annotation.Transactional;
 import org.src.boot.model.User;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface UserService {
+public interface UserDAO {
 
-    @Transactional
     void saveUsers(User user);
 
-    @Transactional
     void updateUser(User user);
 
     List<User> getAllUsers();
 
-    @Transactional
     void deleteByIdUsers(long id);
 
     User findById(long id);

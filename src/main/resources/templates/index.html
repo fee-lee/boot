@@ -16,9 +16,9 @@
                 <td th:text="${user.getName()}"></td>
                 <td th:text="${user.getLastName()}"></td>
                 <td>
-                    <a th:href="@{/edit/{id}(id=${user.getId})}">Edit</a></td>
+                    <a th:href="@{/user/edit/{id}(id=${user.getId})}">Edit</a></td>
                 <td>
-                    <form th:method="delete" th:action="@{/delete/{id}(id=${user.getId})}">
+                    <form th:method="delete" th:action="@{/user/delete/{id}(id=${user.getId})}">
                         <input type="submit" value="Delete"/>
                     </form>
                 </td>
@@ -27,7 +27,7 @@
     </table>
     <br>
     <div th:align="center">
-        <a href="/newUser">create User</a>
+        <a th:href="@{/user/newUser}">create User</a>
     </div>
 </body>
 </html>

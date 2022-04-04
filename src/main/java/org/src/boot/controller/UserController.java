@@ -8,48 +8,48 @@ import org.src.boot.model.User;
 import org.src.boot.service.UserService;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/user")
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public String getAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
-        return "/index";
+        return "index";
     }
 
-    @GetMapping("newUser")
+    @GetMapping("/newUser")
     public String newUser(@ModelAttribute("user") User user) {
-        return "/newUser";
+        return "newUser";
     }
 
     @PostMapping("/new")
     public String createUser(@ModelAttribute("user") User user) {
         userService.saveUsers(user);
-        return "redirect:/";
+        return "redirect:/user";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.findById(id));
-        return "/edit";
+        return "edit";
     }
 
     @PutMapping("/{id}")
     public String update(@ModelAttribute("user") User user) {
-        userService.saveUsers(user);
-        return "redirect:/";
+        userService.updateUser(user);
+        return "redirect:/user";
     }
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id) {
         userService.deleteByIdUsers(id);
-        return "redirect:/";
+        return "redirect:/user";
     }
 }

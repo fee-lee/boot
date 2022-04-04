@@ -6,7 +6,7 @@
 </head>
 <body>
     <h2 th:align="center">Изменить пользователя.</h2>
-    <form th:action="@{/{id}(id=${user.id})}" th:method="put" th:object="${user}">
+    <form th:action="@{/user/{id}(id=${user.id})}" th:method="put" th:object="${user}">
         <table th:align="center" th:border="1">
             <tr>
                 <td>Введите имя</td>
